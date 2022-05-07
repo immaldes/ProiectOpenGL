@@ -1,3 +1,0 @@
-Added terrain object and scaleFactor to DrawObject() method.
-Added water object. Known bug: water shows up reddish.
-More refactoring.
