@@ -1,0 +1,5 @@
+﻿  Submarine.cpp
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+..\_external\glfw-3.3.6.bin.WIN32\lib-vc2019\glfw3dll.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+..\_external\glew-2.1.0\lib\Release\Win32\glew32.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\x64\Debug\Submarine.exe : fatal error LNK1120: 1 unresolved externals
