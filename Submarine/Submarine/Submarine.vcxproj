@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\_external\assimp\include\assimp;..\_external\glfw-3.3.6.bin.WIN32\include\GLFW;..\_external\glew-2.1.0\include;..\_external\glm\glm;..\_external\glm\glm;..\_external\assimp\include\assimp;..\_external\glew-2.1.0\include;..\_external\glfw-3.3.6.bin.WIN32\include\GLFW;$(IncludePath)</IncludePath>
+    <IncludePath>..\_external\stb-master;..\_external\assimp\include\assimp;..\_external\glfw-3.3.6.bin.WIN32\include\GLFW;..\_external\glew-2.1.0\include;..\_external\glm\glm;..\_external\glm\glm;..\_external\assimp\include\assimp;..\_external\glew-2.1.0\include;..\_external\glfw-3.3.6.bin.WIN32\include\GLFW;$(IncludePath)</IncludePath>
     <LibraryPath>..\_external\assimp\lib;..\_external\glfw-3.3.6.bin.WIN32\lib-vc2019;..\_external\glew-2.1.0\lib\Release\Win32;..\_external\assimp\lib;..\_external\glew-2.1.0\lib\Release\Win32;..\_external\glfw-3.3.6.bin.WIN32\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,7 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\_external\assimp\include\assimp;..\_external\glfw-3.3.6.bin.WIN32\include\GLFW;..\_external\glew-2.1.0\include;..\_external\glm\glm;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>..\_external\stb-master;..\_external\assimp\include\assimp;..\_external\glfw-3.3.6.bin.WIN32\include\GLFW;..\_external\glew-2.1.0\include;..\_external\glm\glm;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>..\_external\assimp\lib;..\_external\glfw-3.3.6.bin.WIN32\lib-vc2019;..\_external\glew-2.1.0\lib\Release\Win32;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Submarine.cpp" />
   </ItemGroup>
   <ItemGroup>

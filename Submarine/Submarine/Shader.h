@@ -1,5 +1,5 @@
-#ifndef SHADER_H
-#define SHADER_H
+//#ifndef SHADER_H
+//#define SHADER_H
 
 //#include <glad/glad.h>
 #include <glm.hpp>
@@ -49,5 +49,5 @@ private:
     // ------------------------------------------------------------------------
     void checkCompileErrors(GLuint shader, std::string type);
 };
-#endif
+//#endif
 
