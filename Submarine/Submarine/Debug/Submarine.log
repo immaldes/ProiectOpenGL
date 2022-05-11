@@ -1,2 +1,6 @@
-﻿  Submarine.cpp
-  Submarine.vcxproj -> D:\ProiectSMM\ProiectSMM\Submarine\Debug\Submarine.exe
+﻿  Camera.cpp
+  Shader.cpp
+  Submarine.cpp
+  Generating Code...
+  LINK : D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Debug\Submarine.exe not found or not built by the last incremental link; performing full link
+  Submarine.vcxproj -> D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Debug\Submarine.exe
