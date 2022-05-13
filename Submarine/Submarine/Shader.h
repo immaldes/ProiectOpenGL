@@ -1,5 +1,5 @@
-//#ifndef SHADER_H
-//#define SHADER_H
+#ifndef SHADER_H
+#define SHADER_H
 
 //#include <glad/glad.h>
 #include <glm.hpp>
@@ -16,7 +16,7 @@ public:
     unsigned int ID;
     // constructor generates the shader on the fly
     // ------------------------------------------------------------------------
-    Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath);
+    Shader(const char* vertexPath, const char* fragmentPath);
 
     // activate the shader
     // ------------------------------------------------------------------------
@@ -49,5 +49,5 @@ private:
     // ------------------------------------------------------------------------
     void checkCompileErrors(GLuint shader, std::string type);
 };
-//#endif
+#endif
 
