@@ -2,16 +2,15 @@
 
 Model::Model(string const& path, bool gamma): gammaCorrection(gamma)
 {
-	//loadModel(path);
+	loadModel(path);
 }
 
-void Model::Draw(Shader& shader)
+void Model::Draw(unsigned int shader)
 {
-	for (unsigned int i = 0; i < meshes.size(); i++)
-		meshes[i].Draw(shader);
+    for (unsigned int i = 0; i < meshes.size(); i++)
+        meshes[i].Draw(shader);
 }
 
-/*
 
 void Model::loadModel(string const& path)
 {
@@ -164,4 +163,4 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type,
     return textures;
 }
 
-*/
+

@@ -1,30 +1,33 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
 #include <iostream>
-#include <stdlib.h> // necesare pentru citirea shaderStencilTesting-elor
 
 #include <GL/glew.h>
+#include "Model.h"
+#include <filesystem>
+#include <glfw3.h>
 
-#define GLM_FORCE_CTOR_INIT
 #include <GLM.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
-
-#include <glfw3.h>
-
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 #include "Camera.h"
-#include "Shader.h"
-#include "Skybox.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
+#include "stb_image.h"
 
-#pragma comment (lib, "glfw3dll.lib")
-#pragma comment (lib, "glew32.lib")
+#include <iostream>
+#include "Shader.h"
+
 #pragma comment (lib, "OpenGL32.lib")
-#pragma comment (lib, "assimp-vc140-mt.lib")
-
-#include<vector>
+#pragma comment (lib, "glew32.lib")
+#pragma comment (lib, "glfw3dll.lib")
 
 #include<filesystem>
+
 namespace fs = std::filesystem;
 
 const unsigned int SCR_WIDTH = 1280;
@@ -247,6 +250,8 @@ int main(int argc, char** argv) {
 	//Skybox skybox;
 	//skybox.buildSkybox(shaderCubeMaps,shaderSkybox);
 
+	Model oceanFloorModel(localPath.string() + "/Resources/Oceanfloor/Oceanfloor Fixed Final.obj");
+
 	// ** RENDER LOOP **
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -313,6 +318,21 @@ int main(int argc, char** argv) {
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------
 		glUseProgram(shaderProgram);
+
+		unsigned int viewLoc = glGetUniformLocation(shaderProgram, "view");
+		unsigned int projLoc = glGetUniformLocation(shaderProgram, "projection");
+		unsigned int modelLoc = glGetUniformLocation(shaderProgram, "model");
+		// pass them to the shaders (3 different ways)
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
+		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+
+		glm::mat4 modelOcean = glm::mat4(1.0f);
+		modelOcean = glm::translate(modelOcean, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+		modelOcean = glm::scale(modelOcean, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelOcean));
+		oceanFloorModel.Draw(shaderProgram);
+
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

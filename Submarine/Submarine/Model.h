@@ -1,11 +1,15 @@
 
-//#include <glm.hpp>
-//#include <gtc/matrix_transform.hpp>
+#pragma once
+#include <Gl/glew.h>
 
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
 #include <stb_image.h>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
+
+#include "Mesh.h"
 
 #include <string>
 #include <fstream>
@@ -13,8 +17,6 @@
 #include <iostream>
 #include <map>
 #include <vector>
-
-#include "Mesh.h"
 using namespace std;
 
 unsigned int TextureFromFile(const char* path, const string& directory, bool gamma = false);
@@ -29,15 +31,15 @@ public:
     bool gammaCorrection;
 
     Model(string const& path, bool gamma = false);
-    void Draw(Shader& shader);
+    void Draw(unsigned int shader);
 
 
 private:
-    /*void loadModel(string const& path);
+    void loadModel(string const& path);
     void processNode(aiNode* node, const aiScene* scene);
     Mesh processMesh(aiMesh* mesh, const aiScene* scene);
     vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName);
-    */
+    
 };
 
 unsigned int TextureFromFile(const char* path, const string& directory, bool gamma)

@@ -1,2 +1,12 @@
-﻿  Model.cpp
+﻿  Submarine.cpp
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(280,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(360,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(361,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(365,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(366,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(368,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(369,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+Submarine.obj : warning LNK4006: "unsigned int __cdecl TextureFromFile(char const *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,bool)" (?TextureFromFile@@YAIPBDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z) already defined in Model.obj; second definition ignored
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Debug\Submarine.exe : warning LNK4088: image being generated due to /FORCE option; image may not run
   Submarine.vcxproj -> D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Debug\Submarine.exe
