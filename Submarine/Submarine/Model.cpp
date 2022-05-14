@@ -11,7 +11,7 @@ void Model::Draw(Shader& shader)
 		meshes[i].Draw(shader);
 }
 
-/*
+
 
 void Model::loadModel(string const& path)
 {
@@ -164,4 +164,4 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type,
     return textures;
 }
 
-*/
+

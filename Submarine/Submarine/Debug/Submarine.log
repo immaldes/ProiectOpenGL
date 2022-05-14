@@ -1,2 +1,16 @@
-﻿  Model.cpp
+﻿  Camera.cpp
+  Mesh.cpp
+  Model.cpp
+  Shader.cpp
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Shader.cpp(60,18): warning C4101: 'geometry': unreferenced local variable
+  Skybox.cpp
+  Submarine.cpp
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(275,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(340,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(341,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(345,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(346,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(348,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(349,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   Submarine.vcxproj -> D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Debug\Submarine.exe
