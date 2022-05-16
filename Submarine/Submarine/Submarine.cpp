@@ -3,6 +3,7 @@
 #include <math.h>
 #include <iostream>
 
+
 #include <GL/glew.h>
 #include "Model.h"
 #include <filesystem>
@@ -31,7 +32,9 @@
 namespace fs = std::filesystem;
 
 const unsigned int SCR_WIDTH = 1280;
-const unsigned int SCR_HEIGHT = 720; 
+const unsigned int SCR_HEIGHT = 720;
+const unsigned int SHADOW_WIDTH = 4096;
+const unsigned int SHADOW_HEIGHT = 4096;
 
 const char* fragmentShaderSource = "#version 330 core\n"
 "out vec4 FragColor;\n"
@@ -109,58 +112,68 @@ bool InitializeWindow(GLFWwindow*& window) {
 	return true;
 } 
 
+bool BuildDepthMapVBO(unsigned int& depthMap, unsigned int& depthMapFBO) {
+
+	// configure depth map FBO
+	glGenFramebuffers(1, &depthMapFBO);
+	// create depth texture
+
+	glGenTextures(1, &depthMap);
+	glBindTexture(GL_TEXTURE_2D, depthMap);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+	float borderColor[] = { 1.0, 1.0, 1.0, 1.0 };
+	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+	// attach depth texture as FBO's depth buffer
+	glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
+	glDrawBuffer(GL_NONE);
+	glReadBuffer(GL_NONE);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	return true;
+}
+
 int main(int argc, char** argv) {
 	
 	GLFWwindow* window;
 	InitializeWindow(window);
+	glfwSwapInterval(1);
+
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
 
 	Shader shaderSkybox("skybox.vs", "skybox.fs");
-	//Shader shaderCubeMaps("cubemaps.vs", "cubemaps.fs");
+	Shader shadowMappingShader("ShadowMapping.vs", "ShadowMapping.fs");
+	Shader shadowMappingDepthShader("ShadowMappingDepth.vs","ShadowMappingDepth.fs");
+	Shader shaderModel("modelLoading.vs","modelLoading.frag");
+	Shader shaderWater("water.vs", "water.fs");
+	
+	fs::path localPath = std::filesystem::current_path();
+	std::string pathToSkybox = localPath.string() + "/Resources";
+	//Model oceanFloorModel(localPath.string() + "/Resources/BlueWreck/MaviWreck.obj");
+	Model waterModel(localPath.string() + "/Resources/Water/water.obj");
+	Model underwaterModel(localPath.string() + "/Resources/Underwater Scene/Underwater Scene.obj");
 
-	/*float cubeVertices[] = {
-		// positions          // texture Coords
-		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	unsigned int depthMap;
+	unsigned int depthMapFBO;
+	BuildDepthMapVBO(depthMap, depthMapFBO);
 
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	// shader configuration
+	shadowMappingShader.use();
+	shadowMappingShader.setInt("diffuseTexture", 0);
+	shadowMappingShader.setInt("shadowMap", 1);
 
-		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	// lighting info
+	glm::vec3 lightPos(-2.0f, 4.0f, -1.0f);
+	glEnable(GL_CULL_FACE);
 
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-	};*/
 	float skyboxVertices[] = {
 		// positions          
 		-1.0f,  1.0f, -1.0f,
@@ -206,17 +219,7 @@ int main(int argc, char** argv) {
 		 1.0f, -1.0f,  1.0f
 	};
 
-	// cube VAO
-	/*unsigned int cubeVAO, cubeVBO;
-	glGenVertexArrays(1, &cubeVAO);
-	glGenBuffers(1, &cubeVBO);
-	glBindVertexArray(cubeVAO);
-	glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), &cubeVertices, GL_STATIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+
 	// skybox VAO*/
 	unsigned int skyboxVAO, skyboxVBO;
 	glGenVertexArrays(1, &skyboxVAO);
@@ -227,8 +230,7 @@ int main(int argc, char** argv) {
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
-	fs::path localPath = std::filesystem::current_path();
-	std::string pathToSkybox = localPath.string() + "/Resources";
+
 
 	std::vector<std::string> faces
 	{
@@ -240,17 +242,13 @@ int main(int argc, char** argv) {
 		pathToSkybox + "/back.jpg",
 	};
 
-	//shaderCubeMaps.use();
-	//shaderCubeMaps.setInt("texture1", 0);
+	
+
 	unsigned int cubemapTexture = loadCubemap(faces);
 
 	shaderSkybox.use();
 	shaderSkybox.setInt("skybox", 0);
 
-	//Skybox skybox;
-	//skybox.buildSkybox(shaderCubeMaps,shaderSkybox);
-
-	Model oceanFloorModel(localPath.string() + "/Resources/Oceanfloor/Oceanfloor Fixed Final.obj");
 
 	// ** RENDER LOOP **
 	unsigned int vertexShader;
@@ -274,10 +272,12 @@ int main(int argc, char** argv) {
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
+
+
 	while (!glfwWindowShouldClose(window)) {
 
 		// per-frame time logic
-		float currentFrame = glfwGetTime();
+		float currentFrame = static_cast<float>(glfwGetTime());
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 
@@ -292,9 +292,8 @@ int main(int argc, char** argv) {
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glm::mat4 view = camera.GetViewMatrix();
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		//glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+		glm::mat4 view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
+		
 
 		// draw scene as normal
 		//shaderCubeMaps.use();
@@ -315,8 +314,7 @@ int main(int argc, char** argv) {
 		glDepthFunc(GL_LESS); // set depth function back to default
 		
 		view = camera.GetViewMatrix();
-		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-		// -------------------------------------------------------------------------------
+
 		glUseProgram(shaderProgram);
 
 		unsigned int viewLoc = glGetUniformLocation(shaderProgram, "view");
@@ -327,13 +325,31 @@ int main(int argc, char** argv) {
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
 
-		glm::mat4 modelOcean = glm::mat4(1.0f);
-		modelOcean = glm::translate(modelOcean, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-		modelOcean = glm::scale(modelOcean, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelOcean));
+		/*glm::mat4 modelOceanfloor = glm::mat4(1.0f);
+		modelOceanfloor = glm::rotate(modelOceanfloor, (float)glm::radians(90.0f), glm::vec3(-50.0f, 50.0f, 60.0));
+		modelOceanfloor = glm::translate(modelOceanfloor, glm::vec3(0.0f, 0.0f, 0.0f)); 
+		modelOceanfloor = glm::scale(modelOceanfloor, glm::vec3(0.05f, 0.05f, 0.05f));	
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelOceanfloor));
 		oceanFloorModel.Draw(shaderProgram);
 
+		glm::mat4 modelWater = glm::mat4(1.0f);
+		modelWater = glm::translate(modelWater, glm::vec3(-2.0f, -2.0f, 0.0f));
+		modelWater = glm::scale(modelWater, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelWater));
+		waterModel.Draw(shaderProgram);*/
 
+		glm::mat4 modelUnderwater = glm::mat4(1.0f);
+		modelUnderwater = glm::translate(modelUnderwater, glm::vec3(0.0f, 0.0f, 0.0f));
+		modelUnderwater = glm::scale(modelUnderwater, glm::vec3(0.5f, 0.5f, 0.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelUnderwater));
+		underwaterModel.Draw(shaderProgram);
+
+
+
+
+
+
+	
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -444,3 +460,4 @@ void setFaces(std::vector<std::string>& faces, std::string& textureFolder, unsig
 
 	cubemapTexture = loadCubemap(faces);
 }
+
