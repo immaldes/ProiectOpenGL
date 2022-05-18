@@ -108,6 +108,8 @@ bool DrawObject(Shader shaderModel, Model objectModel, glm::mat4& view, glm::mat
 	return true;
 }
 
+
+
 bool DrawAndRotateSubmarineObject(Shader shaderModel, Model objectModel, glm::mat4& view, glm::mat4& projection, float scaleFactor, float time, float speedFactor) {
 	// ** MODEL **
 	shaderModel.Use();
@@ -165,6 +167,32 @@ bool DrawAndRotateObject(Shader shaderModel, Model objectModel, glm::mat4& view,
 
 	return true;
 }
+
+bool DrawSeaHorse(Shader shaderModel, Model objectModel, glm::mat4& view, glm::mat4& projection, float scaleFactor) {
+	// ** MODEL **
+	shaderModel.Use();
+
+	view = pCamera->GetViewMatrix();
+
+	shaderModel.SetMat4("view", view);
+	shaderModel.SetMat4("projection", projection);
+
+
+
+	// Draw the loaded model
+	glm::mat4 model;
+	model = glm::translate(model, glm::vec3(-2.0f, 0.0f, 1.0f));
+	model = glm::scale(model, glm::vec3(scaleFactor, scaleFactor, scaleFactor));	// Scale model
+	model = glm::rotate(model, glm::radians(200.f), glm::vec3(1.0f, 1.0f, 1.0f));
+	shaderModel.SetMat4("model", model);
+	objectModel.Draw(shaderModel);
+	// ** MODEL **
+
+	return true;
+}
+
+
+
 
 
 bool BuildDepthMapVBO(unsigned int& depthMap, unsigned int& depthMapFBO) {
@@ -296,6 +324,8 @@ int main(int argc, char** argv) {
 	std::string pathTerrain = pathToTerrain + "terrain.obj";
 	std::string pathWater = pathToWater + "water.obj";
 	std::string pathDory = pathToObjects + "Fish\\Dory.obj";
+	std::string pathSeaHorse = pathToObjects + "Fish\\10044_SeaHorse_v1_iterations-2.obj";
+
 
 	const char* submarine = pathSub.c_str();
 	Model submarineModel((GLchar*)submarine);
@@ -305,6 +335,9 @@ int main(int argc, char** argv) {
 
 	const char* terrain = pathTerrain.c_str();
 	Model terrainModel((GLchar*)terrain);
+
+	const char* seaHorse = pathSeaHorse.c_str();
+	Model seaHorseModel((GLchar*)seaHorse);
 
 	const char* dory = pathDory.c_str();
 	Model doryModel((GLchar*)dory);
@@ -380,7 +413,8 @@ int main(int argc, char** argv) {
 			DrawObject(shaderModel, doryModel, view, projection, 1.0f, 1.5f, 10.0f, 22.0f);
 			DrawObject(shaderModel, doryModel1, view, projection, 4.0f, 1.5f, 1.0f, 30.0f);
 			DrawObject(shaderModel, doryModel2, view, projection, 1.0f, 1.5f, 10.0f, 25.0f);
-			
+
+			DrawSeaHorse(shaderModel, seaHorseModel, view, projection, 0.01f);
 		//}
 		// ** MODEL **
 
