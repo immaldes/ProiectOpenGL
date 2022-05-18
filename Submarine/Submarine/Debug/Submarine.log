@@ -1,5 +1,0 @@
-﻿  Submarine.cpp
-LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
-Submarine.obj : warning LNK4006: "unsigned int __cdecl TextureFromFile(char const *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?TextureFromFile@@YAIPBDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) already defined in Model.obj; second definition ignored
-D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Debug\Submarine.exe : warning LNK4088: image being generated due to /FORCE option; image may not run
-  Submarine.vcxproj -> D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Debug\Submarine.exe
