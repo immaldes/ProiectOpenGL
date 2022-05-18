@@ -13,6 +13,10 @@ const unsigned int SHADOW_HEIGHT = 4096;
 // timing
 double deltaTime = 0.0f;    // time between current frame and last frame
 double lastFrame = 0.0f;
+float gfKa = 5.0f;
+float gfKd = 10.0f;
+float gfKs = 20.0f;
+float n = 10.0;
 
 Camera* pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 3.0));
 

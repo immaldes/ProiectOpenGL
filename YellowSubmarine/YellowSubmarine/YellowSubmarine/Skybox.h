@@ -11,7 +11,9 @@
 
 unsigned int cubeMapVAO, cubeMapVBO;
 unsigned int skyboxVAO, skyboxVBO;
-unsigned int cubemapTexture;
+
+unsigned int cubemapTexture1;
+unsigned int cubemapTexture2;
 
 unsigned int loadCubemap(std::vector<std::string> faces) {
 	unsigned int textureID;
@@ -154,7 +156,7 @@ bool buildSkybox(Shader shaderCubeMap, Shader shaderSkybox, std::string pathToTe
 	// load textures
 	// -------------
 	std::string pathToSkybox = pathToTextures + "Skybox\\";
-	std::vector<std::string> faces
+	std::vector<std::string> faces1
 	{
 		pathToSkybox + "right.jpg",
 		pathToSkybox + "left.jpg",
@@ -164,13 +166,31 @@ bool buildSkybox(Shader shaderCubeMap, Shader shaderSkybox, std::string pathToTe
 		pathToSkybox + "back.jpg",
 	};
 
-	cubemapTexture = loadCubemap(faces);
+	std::vector<std::string> faces2
+	{
+		pathToSkybox + "RightImage.png",
+		pathToSkybox + "LeftImage.png",
+		pathToSkybox + "TopImage.png",
+		pathToSkybox + "BottomImage.png",
+		pathToSkybox + "FrontImage.png",
+		pathToSkybox + "BackImage.png",
+	};
+
+	cubemapTexture1 = loadCubemap(faces1);
+	cubemapTexture2 = loadCubemap(faces2);
+
 
 	shaderCubeMap.Use();
 	shaderCubeMap.SetInt("skybox", 0);
 
 	shaderSkybox.Use();
 	shaderSkybox.SetInt("skybox", 0);
+
+	shaderCubeMap.Use();
+	shaderCubeMap.SetInt("skybox1", 1);
+
+	shaderSkybox.Use();
+	shaderSkybox.SetInt("skybox1", 1);
 
 	return true;
 }

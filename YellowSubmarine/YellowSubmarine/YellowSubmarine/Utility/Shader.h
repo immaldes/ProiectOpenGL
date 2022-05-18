@@ -177,6 +177,24 @@ public:
 	void SetMat4(const std::string& name, const glm::mat4& mat) const {
 		glUniformMatrix4fv(glGetUniformLocation(this->Program, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 	}
+	void SetValueKa(const std::string& name, float value) const
+	{
+		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+	}
+	void SetValueKd(const std::string& name, float value) const
+	{
+		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+	}
+	void SetValueKs(const std::string& name, float value) const
+	{
+		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+	}
+	void SetValueN(const std::string& name, float value) const
+	{
+		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+	}
+	public:
+		unsigned int ID;
 };
 
 #endif

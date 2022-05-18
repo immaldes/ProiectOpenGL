@@ -37,7 +37,7 @@ bool DrawSkybox(Shader shaderSkybox, glm::mat4& view, glm::mat4& projection) {
 	// cubes
 	glBindVertexArray(cubeMapVAO);
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture1);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);
 
@@ -53,7 +53,7 @@ bool DrawSkybox(Shader shaderSkybox, glm::mat4& view, glm::mat4& projection) {
 	// skybox cube
 	glBindVertexArray(skyboxVAO);
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture1);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);
 	glDepthFunc(GL_LESS); // set depth function back to default
@@ -404,7 +404,7 @@ int main(int argc, char** argv) {
 	shadowMappingShader.SetInt("shadowMap", 1);
 
 	// lighting info
-	glm::vec3 lightPos(-2.0f, 4.0f, -1.0f);
+	//glm::vec3 lightPos(-2.0f, 4.0f, -1.0f);
 
 	glEnable(GL_CULL_FACE);
 
@@ -418,11 +418,90 @@ int main(int argc, char** argv) {
 	
 	// ** WATER **
 	Shader shaderWater(pathToWaterShaders + "water.vs", pathToWaterShaders + "water.fs");
-
-	
 	const char* water = pathWater.c_str();
 	Model waterModel((GLchar*)water);
 	// ** WATER **
+
+	// ** SUN **
+	float verticesSun[] = {
+	   -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	   0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	   0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	   0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	   -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	   -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+
+	   -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+	   0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+	   0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+	   0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+	   -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+	   -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+
+	   -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+	   -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+	   -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+	   -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+	   -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+	   -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+
+	   0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+	   0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+	   0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+	   0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+	   0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+	   0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+
+	   -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+	   0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+	   0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+	   0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+	   -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+	   -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+
+	   -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+	   0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+	   0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+	   0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+	   -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+	   -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
+	};
+
+	// first, configure the cube's VAO (and VBO)
+	unsigned int VBO, cubeVAO;
+	glGenVertexArrays(1, &cubeVAO);
+	glGenBuffers(1, &VBO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(verticesSun), verticesSun, GL_STATIC_DRAW);
+
+	glBindVertexArray(cubeVAO);
+
+	// position attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	// normal attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+
+	// second, configure the light's VAO (VBO stays the same; the vertices are the same for the light object which is also a 3D cube)
+	unsigned int lightVAO;
+	glGenVertexArrays(1, &lightVAO);
+	glBindVertexArray(lightVAO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	// note that we update the lamp's position attribute's stride to reflect the updated buffer data
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	glm::vec3 lightPos(0.0f, 0.0f, 2.0f);
+
+	double mixValue = 0.0;
+
+	Shader lightingShader("PhongLight.vs", "PhongLight.fs");
+	Shader lampShader("Lamp.vs", "Lamp.fs");
+	// ** SUN **
 
 	// ** RENDER LOOP **
 	while (!glfwWindowShouldClose(window)) {
@@ -437,13 +516,87 @@ int main(int argc, char** argv) {
 			lightPos.z = cos(currentFrame);
 		}
 
+		lightingShader.Use();
+		lightingShader.SetVec3("objectColor", 0.5f, 1.0f, 0.31f);
+		lightingShader.SetVec3("lightColor", 1.0f, 1.0f, 1.0f);
+		lightingShader.SetVec3("lightPos", lightPos);
+
+		lightingShader.SetValueKa("Ka", gfKa);
+		lightingShader.SetValueKd("Kd", gfKd);
+		lightingShader.SetValueKs("Ks", gfKs);
+		lightingShader.SetValueN("n", n);
+
+
+		lightingShader.SetVec3("viewPos", pCamera->GetPosition());
+
+		lightingShader.SetMat4("projection", pCamera->GetProjectionMatrix());
+		lightingShader.SetMat4("view", pCamera->GetViewMatrix());
+		glm::mat4 model = glm::scale(glm::mat4(1.0), glm::vec3(3.0f));
+		lightingShader.SetMat4("model", model);
+
 		// input
 		processInput(window);
 
 		glm::mat4 view = pCamera->GetViewMatrix();
 		RenderSceneWithLight(shadowMappingDepthShader, shadowMappingShader, depthMap, depthMapFBO, lightPos, view, projection);
 
+		shaderSkybox.SetFloat("mixValue", mixValue);
+		glUniform1i(glGetUniformLocation(shaderSkybox.ID, "skybox"), 0);
+		glUniform1i(glGetUniformLocation(shaderSkybox.ID, "skybox1"), 1);
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture1);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture2);
+
+		glBindVertexArray(skyboxVAO);
+
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glDepthMask(GL_TRUE);
+		glActiveTexture(GL_TEXTURE0);
+
 		DrawSkybox(shaderSkybox, view, projection);
+
+		static double lightMovementRadius = 10.0f;
+		lightPos.y = lightMovementRadius * glm::sin(currentFrame * 0.3);
+		lightPos.x = lightMovementRadius * glm::cos(currentFrame * 0.3);
+
+		//lamp
+		lampShader.Use();
+		lampShader.SetMat4("projection", pCamera->GetProjectionMatrix());
+		lampShader.SetMat4("view", pCamera->GetViewMatrix());
+
+		glm::mat4 modelLight = glm::scale(glm::mat4(1.0), glm::vec3(3.0f));
+
+		modelLight = glm::translate(glm::mat4(1.0), lightPos);
+		modelLight = glm::scale(modelLight, glm::vec3(0.05f)); // a smaller cube
+		lampShader.SetMat4("model", modelLight);
+
+		glBindVertexArray(lightVAO);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		if (glm::cos(currentFrame * 0.3) < 1.f && glm::cos(currentFrame * 0.3) > 0.f)
+		{
+			if (mixValue < 0)
+			{
+				mixValue = 0;
+			}
+			else
+			{
+				mixValue -= 0.1;
+			}
+		}
+		else if (glm::cos(currentFrame * 0.3) > -1.f && glm::cos(currentFrame * 0.3) < 0.f)
+		{
+			if (mixValue > 1)
+			{
+				mixValue = 1;
+			}
+			else
+			{
+				mixValue += 0.1;
+			}
+		}
 
 		// ** MODEL **
 		//DrawObject(shaderModel, submarineModel, view, projection, 0.5f);
@@ -458,18 +611,16 @@ int main(int argc, char** argv) {
 		DrawObject(shaderModel, terrainModel, view, projection, 0.2f);
 		DrawObject(shaderModel, waterModel, view, projection, 0.2f);
 
-		float x=1.5f, y=1.0f, z=2.0f;
-		//for (int i = 0; i < 10; i++) {
-			DrawObject(shaderModel, doryModel, view, projection, 1.0f, 1.5f, 10.0f, 22.0f);
-			DrawObject(shaderModel, doryModel1, view, projection, 4.0f, 1.5f, 1.0f, 30.0f);
-			DrawObject(shaderModel, doryModel2, view, projection, 1.0f, 1.5f, 10.0f, 25.0f);
+		//float x=1.5f, y=1.0f, z=2.0f;
 
-			DrawSeaHorse(shaderModel, seaHorseModel, view, projection, 0.01f);
-			DrawFish1(shaderModel, fish1Model, view, projection, 0.01f);
-			DrawFish2(shaderModel, fish2Model, view, projection, 0.01f);
+		DrawObject(shaderModel, doryModel, view, projection, 1.0f, 1.5f, 10.0f, 22.0f);
+		DrawObject(shaderModel, doryModel1, view, projection, 4.0f, 1.5f, 1.0f, 30.0f);
+		DrawObject(shaderModel, doryModel2, view, projection, 1.0f, 1.5f, 10.0f, 25.0f);
 
+		DrawSeaHorse(shaderModel, seaHorseModel, view, projection, 0.01f);
+		DrawFish1(shaderModel, fish1Model, view, projection, 0.01f);
+		DrawFish2(shaderModel, fish2Model, view, projection, 0.01f);
 
-		//}
 		// ** MODEL **
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
