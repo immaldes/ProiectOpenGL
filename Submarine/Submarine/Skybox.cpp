@@ -1,12 +1,13 @@
-/*#include"Skybox.h"
+#include"Skybox.h"
 
 #include<filesystem>
+
 namespace fs = std::filesystem;
 
 unsigned int Skybox::loadCubemap(std::vector<std::string> faces)
 {
 	unsigned int textureID;
-	//glGenTextures(1, &textureID);
+	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 
 	int width, height, nrComponents;
@@ -30,13 +31,10 @@ unsigned int Skybox::loadCubemap(std::vector<std::string> faces)
 	return textureID;
 }
 
-bool Skybox::buildSkybox(Shader shaderCubeMap, Shader shaderSkybox/*,std::string pathToTextures*//*)
+bool Skybox::buildSkybox(Shader shaderCubeMap, Shader shaderSkybox)
 {
 
-	// set up vertex data (and buffer(s)) and configure vertex attributes
-	// ------------------------------------------------------------------
 	float cubeVertices[] = {
-		// positions          // normals
 		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 		 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 		 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
@@ -79,8 +77,7 @@ bool Skybox::buildSkybox(Shader shaderCubeMap, Shader shaderSkybox/*,std::string
 		-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
 		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 	};
-	float skyboxVertices[] = {
-		// positions          
+	float skyboxVertices[] = {          
 		-1.0f,  1.0f, -1.0f,
 		-1.0f, -1.0f, -1.0f,
 		 1.0f, -1.0f, -1.0f,
@@ -124,8 +121,6 @@ bool Skybox::buildSkybox(Shader shaderCubeMap, Shader shaderSkybox/*,std::string
 		 1.0f, -1.0f,  1.0f
 	};
 
-	// cube VAO
-    unsigned int cubeMapVAO, cubeMapVBO;
 	glGenVertexArrays(1, &cubeMapVAO);
 	glGenBuffers(1, &cubeMapVBO);
 	glBindVertexArray(cubeMapVAO);
@@ -135,8 +130,8 @@ bool Skybox::buildSkybox(Shader shaderCubeMap, Shader shaderSkybox/*,std::string
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-	// skybox VAO
-	unsigned int skyboxVAO, skyboxVBO;
+	
+
 	glGenVertexArrays(1, &skyboxVAO);
 	glGenBuffers(1, &skyboxVBO);
 	glBindVertexArray(skyboxVAO);
@@ -145,9 +140,7 @@ bool Skybox::buildSkybox(Shader shaderCubeMap, Shader shaderSkybox/*,std::string
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
-	// load textures
-	// -------------
-	//std::string pathToSkybox = pathToTextures + "Skybox\\";
+
 	fs::path localPath = std::filesystem::current_path();
 	std::string pathToSkybox = localPath.string() + "/Resources";
 
@@ -174,9 +167,7 @@ bool Skybox::buildSkybox(Shader shaderCubeMap, Shader shaderSkybox/*,std::string
 
 }
 
-bool Skybox::DrawSkybox(Shader shaderSkybox, glm::mat4& view, glm::mat4& projection, Camera* pCamera)
-{
-
+bool Skybox::DrawSkybox(Shader shaderSkybox, glm::mat4& view, glm::mat4& projection, Camera* pCamera) {
 	// ** SKYBOX **
 
 	// cubes
@@ -205,6 +196,5 @@ bool Skybox::DrawSkybox(Shader shaderSkybox, glm::mat4& view, glm::mat4& project
 	// ** SKYBOX **
 
 	return true;
-
 }
-*/
+

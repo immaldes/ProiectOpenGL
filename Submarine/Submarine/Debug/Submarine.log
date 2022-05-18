@@ -1,11 +1,192 @@
-﻿  Submarine.cpp
-D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(376,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(377,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(381,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(382,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(384,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Submarine.cpp(385,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
-Submarine.obj : warning LNK4006: "unsigned int __cdecl TextureFromFile(char const *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,bool)" (?TextureFromFile@@YAIPBDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z) already defined in Model.obj; second definition ignored
-D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Debug\Submarine.exe : warning LNK4088: image being generated due to /FORCE option; image may not run
-  Submarine.vcxproj -> D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Debug\Submarine.exe
+﻿  Camera.cpp
+  Skybox.cpp
+  Submarine.cpp
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Camera.h(6,15): error C2374: 'ZOOM': redefinition; multiple initialization
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Camera.h(6): message : see declaration of 'ZOOM'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Camera.h(7,13): error C2374: 'SPEED': redefinition; multiple initialization
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Camera.h(7): message : see declaration of 'SPEED'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Camera.h(9,25): error C2011: 'ECameraMovementType': 'enum' type redefinition
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Camera.h(9): message : see declaration of 'ECameraMovementType'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Camera.h(21,13): error C2011: 'Camera': 'class' type redefinition
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\Submarine\Camera.h(21): message : see declaration of 'Camera'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(658,12): error C2084: function 'int stbi__cpuid3(void)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(658): message : see previous definition of 'stbi__cpuid3'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(680,12): error C2084: function 'int stbi__sse2_available(void)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(680): message : see previous definition of 'stbi__sse2_available'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(682,16): error C2065: 'stbi__cpuid3': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(682,30): error C2440: 'initializing': cannot convert from 'int (__cdecl *)(void)' to 'int'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(682,14): message : There is no context in which this conversion is possible
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(738,3): error C2371: 'stbi__context': redefinition; different basic types
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(738): message : see declaration of 'stbi__context'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(744,13): error C2084: function 'void stbi__start_mem(stbi__context *,const stbi_uc *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(744): message : see previous definition of 'stbi__start_mem'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(753,13): error C2084: function 'void stbi__start_callbacks(stbi__context *,stbi_io_callbacks *,void *)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(753): message : see previous definition of 'stbi__start_callbacks'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(766,12): error C2084: function 'int stbi__stdio_read(void *,char *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(766): message : see previous definition of 'stbi__stdio_read'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(771,13): error C2084: function 'void stbi__stdio_skip(void *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(771): message : see previous definition of 'stbi__stdio_skip'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(776,12): error C2084: function 'int stbi__stdio_eof(void *)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(776): message : see previous definition of 'stbi__stdio_eof'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(781,26): error C2374: 'stbi__stdio_callbacks': redefinition; multiple initialization
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(781): message : see declaration of 'stbi__stdio_callbacks'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(788,13): error C2084: function 'void stbi__start_file(stbi__context *,FILE *)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(788): message : see previous definition of 'stbi__start_file'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(790,4): error C2065: 'stbi__start_callbacks': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(797,13): error C2084: function 'void stbi__rewind(stbi__context *)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(797): message : see previous definition of 'stbi__rewind'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(808,4): error C2365: 'STBI_ORDER_RGB': redefinition; previous definition was 'enumerator'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(808): message : see declaration of 'STBI_ORDER_RGB'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(809,4): error C2365: 'STBI_ORDER_BGR': redefinition; previous definition was 'enumerator'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(809): message : see declaration of 'STBI_ORDER_BGR'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(817,3): error C2371: 'stbi__result_info': redefinition; different basic types
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(817): message : see declaration of 'stbi__result_info'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(877,20): error C2086: 'const char *stbi__g_failure_reason': redefinition
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(877): message : see declaration of 'stbi__g_failure_reason'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(879,21): error C2084: function 'const char *stbi_failure_reason(void)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(879): message : see previous definition of 'stbi_failure_reason'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(884,12): warning C4003: not enough arguments for function-like macro invocation 'stbi__err'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(884,12): error C2084: function 'int stbi__err(const char *)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(884): message : see previous definition of 'stbi__err'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(890,14): error C2084: function 'void *stbi__malloc(size_t)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(890): message : see previous definition of 'stbi__malloc'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(907,12): error C2084: function 'int stbi__addsizes_valid(int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(907): message : see previous definition of 'stbi__addsizes_valid'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(909): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(919,12): error C2084: function 'int stbi__mul2sizes_valid(int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(919): message : see previous definition of 'stbi__mul2sizes_valid'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(921): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(922): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(928,12): error C2084: function 'int stbi__mad2sizes_valid(int,int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(928): message : see previous definition of 'stbi__mad2sizes_valid'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(930,11): error C2065: 'stbi__mul2sizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(930,42): error C2065: 'stbi__addsizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(930,72): warning C4551: function call missing argument list
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(930,72): error C2568: '&&': unable to resolve function overload
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(930,72): message : could be 'int stbi__addsizes_valid(int,int)'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(934,12): error C2084: function 'int stbi__mad3sizes_valid(int,int,int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(934): message : see previous definition of 'stbi__mad3sizes_valid'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(936,11): error C2065: 'stbi__mul2sizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(936,42): error C2065: 'stbi__mul2sizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(936,72): warning C4551: function call missing argument list
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(936,72): error C2568: '&&': unable to resolve function overload
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(936,72): message : could be 'int stbi__mul2sizes_valid(int,int)'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(937,7): error C2065: 'stbi__addsizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(942,12): error C2084: function 'int stbi__mad4sizes_valid(int,int,int,int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(942): message : see previous definition of 'stbi__mad4sizes_valid'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(944,11): error C2065: 'stbi__mul2sizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(944,42): error C2065: 'stbi__mul2sizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(944,72): warning C4551: function call missing argument list
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(944,72): error C2568: '&&': unable to resolve function overload
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(944,72): message : could be 'int stbi__mul2sizes_valid(int,int)'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(945,7): error C2065: 'stbi__mul2sizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(945,42): error C2065: 'stbi__addsizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(950,14): error C2084: function 'void *stbi__malloc_mad2(int,int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(950): message : see previous definition of 'stbi__malloc_mad2'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(952,9): error C2065: 'stbi__mad2sizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(952,8): warning C4551: function call missing argument list
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(953,11): error C2065: 'stbi__malloc': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(952): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(956,14): error C2084: function 'void *stbi__malloc_mad3(int,int,int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(956): message : see previous definition of 'stbi__malloc_mad3'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(958,9): error C2065: 'stbi__mad3sizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(958,8): warning C4551: function call missing argument list
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(959,11): error C2065: 'stbi__malloc': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(958): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(963,14): error C2084: function 'void *stbi__malloc_mad4(int,int,int,int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(963): message : see previous definition of 'stbi__malloc_mad4'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(965,9): error C2065: 'stbi__mad4sizes_valid': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(965,8): warning C4551: function call missing argument list
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(966,11): error C2065: 'stbi__malloc': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(965): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(985,14): error C2084: function 'void stbi_image_free(void *)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(985): message : see previous definition of 'stbi_image_free'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(998,12): error C2374: 'stbi__vertically_flip_on_load': redefinition; multiple initialization
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(998): message : see declaration of 'stbi__vertically_flip_on_load'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1000,14): error C2084: function 'void stbi_set_flip_vertically_on_load(int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1000): message : see previous definition of 'stbi_set_flip_vertically_on_load'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1005,14): error C2084: function 'void *stbi__load_main(stbi__context *,int *,int *,int *,int,stbi__result_info *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1005): message : see previous definition of 'stbi__load_main'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1047,11): error C2065: 'stbi__err': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1013): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1016): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1019): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1022): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1025): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1028): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1031): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1043): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1050,17): error C2084: function 'stbi_uc *stbi__convert_16_to_8(stbi__uint16 *,int,int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1050): message : see previous definition of 'stbi__convert_16_to_8'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1056,26): error C2065: 'stbi__malloc': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1057,32): error C2065: 'stbi__err': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1057): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1066,22): error C2084: function 'stbi__uint16 *stbi__convert_8_to_16(stbi_uc *,int,int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1066): message : see previous definition of 'stbi__convert_8_to_16'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1072,32): error C2065: 'stbi__malloc': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1073,50): error C2065: 'stbi__err': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1073): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1082,13): error C2084: function 'void stbi__vertical_flip(void *,int,int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1082): message : see previous definition of 'stbi__vertical_flip'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1107,13): error C2084: function 'void stbi__vertical_flip_slices(void *,int,int,int,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1107): message : see previous definition of 'stbi__vertical_flip_slices'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1114,7): error C2065: 'stbi__vertical_flip': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1120,23): error C2084: function 'unsigned char *stbi__load_and_postprocess_8bit(stbi__context *,int *,int *,int *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1120): message : see previous definition of 'stbi__load_and_postprocess_8bit'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1123,19): error C2065: 'stbi__load_main': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1130,16): error C2065: 'stbi__convert_16_to_8': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1130,104): error C2568: '=': unable to resolve function overload
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1130,104): message : could be 'stbi_uc *stbi__convert_16_to_8(stbi__uint16 *,int,int,int)'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1138,7): error C2065: 'stbi__vertical_flip': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1125): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1144,22): error C2084: function 'stbi__uint16 *stbi__load_and_postprocess_16bit(stbi__context *,int *,int *,int *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1144): message : see previous definition of 'stbi__load_and_postprocess_16bit'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1147,19): error C2065: 'stbi__load_main': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1154,16): error C2065: 'stbi__convert_8_to_16': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1154,99): error C2568: '=': unable to resolve function overload
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1154,99): message : could be 'stbi__uint16 *stbi__convert_8_to_16(stbi_uc *,int,int,int)'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1163,7): error C2065: 'stbi__vertical_flip': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1149): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1170,13): error C2084: function 'void stbi__float_postprocess(float *,int *,int *,int *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1170): message : see previous definition of 'stbi__float_postprocess'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1174,7): error C2065: 'stbi__vertical_flip': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1193,14): error C2084: function 'FILE *stbi__fopen(const char *,const char *)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1193): message : see previous definition of 'stbi__fopen'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1222,18): error C2084: function 'stbi_uc *stbi_load(const char *,int *,int *,int *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1222): message : see previous definition of 'stbi_load'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1224,14): error C2065: 'stbi__fopen': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1224,41): error C2440: 'initializing': cannot convert from 'FILE *(__cdecl *)(const char *,const char *)' to 'FILE *'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1224,12): message : There is no context in which this conversion is possible
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1226,19): error C2065: 'stbi__err': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1226): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1232,18): error C2084: function 'stbi_uc *stbi_load_from_file(FILE *,int *,int *,int *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1232): message : see previous definition of 'stbi_load_from_file'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1236,4): error C2065: 'stbi__start_file': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1237,13): error C2065: 'stbi__load_and_postprocess_8bit': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1237,66): error C2568: '=': unable to resolve function overload
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1237,66): message : could be 'unsigned char *stbi__load_and_postprocess_8bit(stbi__context *,int *,int *,int *,int)'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1245,23): error C2084: function 'stbi_us *stbi_load_from_file_16(FILE *,int *,int *,int *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1245): message : see previous definition of 'stbi_load_from_file_16'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1249,4): error C2065: 'stbi__start_file': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1250,13): error C2065: 'stbi__load_and_postprocess_16bit': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1250,67): error C2568: '=': unable to resolve function overload
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1250,67): message : could be 'stbi__uint16 *stbi__load_and_postprocess_16bit(stbi__context *,int *,int *,int *,int)'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1258,18): error C2084: function 'stbi_us *stbi_load_16(const char *,int *,int *,int *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1258): message : see previous definition of 'stbi_load_16'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1260,14): error C2065: 'stbi__fopen': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1260,41): error C2440: 'initializing': cannot convert from 'FILE *(__cdecl *)(const char *,const char *)' to 'FILE *'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1260,12): message : There is no context in which this conversion is possible
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1262,31): error C2065: 'stbi__err': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1263,13): error C2065: 'stbi_load_from_file_16': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1263,56): error C2568: '=': unable to resolve function overload
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1263,56): message : could be 'stbi_us *stbi_load_from_file_16(FILE *,int *,int *,int *,int)'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1262): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1271,18): error C2084: function 'stbi_us *stbi_load_16_from_memory(const stbi_uc *,int,int *,int *,int *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1271): message : see previous definition of 'stbi_load_16_from_memory'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1274,4): error C2065: 'stbi__start_mem': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1275,11): error C2065: 'stbi__load_and_postprocess_16bit': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1278,18): error C2084: function 'stbi_us *stbi_load_16_from_callbacks(const stbi_io_callbacks *,void *,int *,int *,int *,int)' already has a body
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1278): message : see previous definition of 'stbi_load_16_from_callbacks'
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1281,4): error C2065: 'stbi__start_callbacks': undeclared identifier
+D:\Facultate\Sem II\SMM\ProiectSMM\Submarine\_external\stb-master\stb_image.h(1281,61): fatal error C1003: error count exceeds 100; stopping compilation
+  Generating Code...
