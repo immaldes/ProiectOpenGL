@@ -17,6 +17,7 @@ float gfKa = 5.0f;
 float gfKd = 10.0f;
 float gfKs = 20.0f;
 float n = 10.0;
+bool isDay = true;
 
 Camera* pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 3.0));
 
@@ -41,6 +42,15 @@ void processInput(GLFWwindow* window) {	// process all input: query GLFW whether
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
 		pCamera->Reset(width, height);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+	{
+		isDay = true;
+	}
+	else if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
+	{
+		isDay = false;
 	}
 }
 

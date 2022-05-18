@@ -31,7 +31,7 @@
 #pragma comment (lib, "assimp-vc140-mt.lib")
 
 
-bool DrawSkybox(Shader shaderSkybox, glm::mat4& view, glm::mat4& projection) {
+bool DrawDaySkybox(Shader shaderSkybox, glm::mat4& view, glm::mat4& projection) {
 	// ** SKYBOX **
 
 	// cubes
@@ -54,6 +54,37 @@ bool DrawSkybox(Shader shaderSkybox, glm::mat4& view, glm::mat4& projection) {
 	glBindVertexArray(skyboxVAO);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture1);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+	glBindVertexArray(0);
+	glDepthFunc(GL_LESS); // set depth function back to default
+	// ** SKYBOX **
+
+	return true;
+}
+
+bool DrawNightSkybox(Shader shaderSkybox, glm::mat4& view, glm::mat4& projection) {
+	// ** SKYBOX **
+
+	// cubes
+	glBindVertexArray(cubeMapVAO);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture2);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+	glBindVertexArray(0);
+
+	// draw skybox as last
+	glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
+	shaderSkybox.Use();
+
+	view = glm::mat4(glm::mat3(pCamera->GetViewMatrix())); // remove translation from the view matrix
+
+	shaderSkybox.SetMat4("view", view);
+	shaderSkybox.SetMat4("projection", projection);
+
+	// skybox cube
+	glBindVertexArray(skyboxVAO);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture2);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);
 	glDepthFunc(GL_LESS); // set depth function back to default
@@ -555,7 +586,17 @@ int main(int argc, char** argv) {
 		glDepthMask(GL_TRUE);
 		glActiveTexture(GL_TEXTURE0);
 
-		DrawSkybox(shaderSkybox, view, projection);
+		DrawDaySkybox(shaderSkybox, view, projection);
+
+		if (isDay == true)
+		{
+			DrawDaySkybox(shaderSkybox, view, projection);
+		}
+		else {
+			DrawNightSkybox(shaderSkybox, view, projection);
+
+		}
+
 
 		static double lightMovementRadius = 10.0f;
 		lightPos.y = lightMovementRadius * glm::sin(currentFrame * 0.3);
