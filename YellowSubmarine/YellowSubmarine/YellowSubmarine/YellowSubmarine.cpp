@@ -191,6 +191,28 @@ bool DrawSeaHorse(Shader shaderModel, Model objectModel, glm::mat4& view, glm::m
 	return true;
 }
 
+bool DrawFish1(Shader shaderModel, Model objectModel, glm::mat4& view, glm::mat4& projection, float scaleFactor) {
+	// ** MODEL **
+	shaderModel.Use();
+
+	view = pCamera->GetViewMatrix();
+
+	shaderModel.SetMat4("view", view);
+	shaderModel.SetMat4("projection", projection);
+
+
+
+	// Draw the loaded model
+	glm::mat4 model;
+	model = glm::translate(model, glm::vec3(2.0f, 0.0f, 1.0f));
+	model = glm::scale(model, glm::vec3(scaleFactor, scaleFactor, scaleFactor));	// Scale model
+	model = glm::rotate(model, glm::radians(200.f), glm::vec3(1.0f, 1.0f, 1.0f));
+	shaderModel.SetMat4("model", model);
+	objectModel.Draw(shaderModel);
+	// ** MODEL **
+
+	return true;
+}
 
 
 
@@ -325,6 +347,7 @@ int main(int argc, char** argv) {
 	std::string pathWater = pathToWater + "water.obj";
 	std::string pathDory = pathToObjects + "Fish\\Dory.obj";
 	std::string pathSeaHorse = pathToObjects + "Fish\\10044_SeaHorse_v1_iterations-2.obj";
+	std::string pathFish1 = pathToObjects + "Fish\\13006_Blue_Tang_v1_l3.obj";
 
 
 	const char* submarine = pathSub.c_str();
@@ -338,6 +361,9 @@ int main(int argc, char** argv) {
 
 	const char* seaHorse = pathSeaHorse.c_str();
 	Model seaHorseModel((GLchar*)seaHorse);
+
+	const char* fish1 = pathFish1.c_str();
+	Model fish1Model((GLchar*)fish1);
 
 	const char* dory = pathDory.c_str();
 	Model doryModel((GLchar*)dory);
@@ -415,6 +441,8 @@ int main(int argc, char** argv) {
 			DrawObject(shaderModel, doryModel2, view, projection, 1.0f, 1.5f, 10.0f, 25.0f);
 
 			DrawSeaHorse(shaderModel, seaHorseModel, view, projection, 0.01f);
+			DrawFish1(shaderModel, fish1Model, view, projection, 0.01f);
+
 		//}
 		// ** MODEL **
 
