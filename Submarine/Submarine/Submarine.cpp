@@ -23,13 +23,12 @@
 #include "Skybox.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include <stb_image.h>
 
 
 #pragma comment (lib, "OpenGL32.lib")
 #pragma comment (lib, "glew32.lib")
 #pragma comment (lib, "glfw3dll.lib")
-#pragma comment (lib, "assimp-vc140-mt.lib")
 
 
 namespace fs = std::filesystem;
@@ -226,15 +225,23 @@ int main(int argc, char** argv) {
 
 		skybox.DrawSkybox(shaderSkybox, view, projection,pCamera);
 
+		shaderModel.use();
+
+		shaderModel.setMat4("view", view);
+		shaderModel.setMat4("projection", projection);
 
 		glm::mat4 modelWater;
 		modelWater = glm::translate(modelWater, glm::vec3(0.0f, 0.0f, 0.0f));
 		modelWater = glm::scale(modelWater, glm::vec3(0.2f, 0.2f, 0.2f));
+		shaderModel.setMat4("model", modelWater);
+		waterModel.Draw(shaderModel);
 	
 
 		glm::mat4 modelTerrain;
 		modelTerrain = glm::translate(modelTerrain, glm::vec3(0.0f, 0.0f, 0.0f));
 		modelTerrain = glm::scale(modelTerrain, glm::vec3(0.02f, 0.02f, 0.02f));
+		shaderModel.setMat4("model", modelWater);
+		terrainModel.Draw(shaderModel);
 
 
 	
@@ -317,21 +324,5 @@ unsigned int loadCubemap(std::vector<std::string> faces)
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
 	return textureID;
-}
-
-void setFaces(std::vector<std::string>& faces, std::string& textureFolder, unsigned int& cubemapTexture) {
-	
-		faces =
-		{
-		textureFolder + "/_right.png",
-		textureFolder + "/_left.png",
-		textureFolder + "/_top.png",
-		textureFolder + "/_bottom.png",
-		textureFolder + "/_front.png",
-		textureFolder + "/_back.png"
-		};
-
-
-	cubemapTexture = loadCubemap(faces);
 }
 

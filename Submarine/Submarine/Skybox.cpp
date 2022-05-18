@@ -148,7 +148,7 @@ bool Skybox::buildSkybox(Shader shaderCubeMap, Shader shaderSkybox)
 	{
 		pathToSkybox + "/right.jpg",
 		pathToSkybox + "/left.jpg",
-		pathToSkybox + "/top.jpg",
+		pathToSkybox + "/up.jpg",
 		pathToSkybox + "/bottom.jpg",
 		pathToSkybox + "/front.jpg",
 		pathToSkybox + "/back.jpg",

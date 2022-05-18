@@ -1,3 +1,4 @@
+#pragma once
 #include <vec3.hpp>
 #include <mat4x4.hpp>
 
@@ -6,7 +7,7 @@
 const GLfloat ZOOM = 45.0f;
 const float SPEED = 7.0f;
 
-enum ECameraMovementType{
+enum ECameraMovementType {
 	UNKNOWN,
 	FORWARD,
 	BACKWARD,
